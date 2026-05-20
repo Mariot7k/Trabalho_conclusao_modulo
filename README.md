@@ -34,3 +34,6 @@ Para garantir a aderência do código aos critérios de avaliação da banca, ut
 Antes do início da geração de código pela IA, o grupo forneceu o levantamento de requisitos realizado em sala, as diretrizes do PDF do trabalho e as principais bibliotecas lecionadas. 
 
 Por se tratar de um sistema baseado estritamente em estruturas básicas, **não houve falhas críticas de lógica por parte da IA nas regras de negócio**. Praticamente não houve necessidade de depuração (*debug*) manual de erros de processamento; a maior parte dos ajustes solicitados concentrou-se na refatoração para decisões de design arquitetural, usabilidade no terminal e adequação restritiva às bibliotecas permitidas.
+
+# Trabalho_conclusao_modulo
+Este repositório representa a nossa atividade avaliativa em andamento até 20/05/2026, sobre a matéria de Desenvolvimento de Programas Estruturados e Modularização, lecionada pelo nosso Prof. Raffael Carvalho
