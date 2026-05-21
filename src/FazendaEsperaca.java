@@ -202,6 +202,16 @@ public class FazendaEsperaca {
                                 // 4 - Relatório de Secagem (Destinos do Café)
                                 GerarRelatorios.exibirRelatorioSecagem(colheitas, qtdColheitas);
                                 break;
+                            
+                            case 5:
+                                // 5 - Consultar Lista de Talhões
+                                GerarRelatorios.listarTalhoes(talhoes, qtdTalhoes);
+                                break;
+                            
+                            case 6:
+                                // 6 - Consultar Lista da Frota
+                                GerarRelatorios.listarFrota(frota, qtdVeiculos);
+                                break;
                                 
                             case 0:
                                 // 0 - Voltar

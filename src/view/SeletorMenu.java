@@ -55,16 +55,17 @@ public class SeletorMenu {
         System.out.println("2 - Extrato Individual de Colheita (Por Funcionário)");
         System.out.println("3 - Fechamento do Talhão (Estimativa vs. Produção)");
         System.out.println("4 - Relatório de Secagem (Destinos do Café)");
+        System.out.println("5 - Consultar Lista de Talhões (ID e Nome)");
+        System.out.println("6 - Consultar Lista da Frota (Placa e Capacidade Max)");
         System.out.println("0 - Voltar ao Menu Principal");
         System.out.print("Escolha o relatório desejado: ");
 
         try {
             int opcao = Integer.parseInt(input.nextLine());
-            return opcao; // Retorna o número escolhido para a Main
-            
+            return opcao; 
         } catch (NumberFormatException e) {
             System.out.println("\n[ERRO] Digite um número inteiro válido.");
-            return -1; // Retorna -1 para avisar a Main que ocorreu um erro de digitação
+            return -1; 
         }
     }
 }

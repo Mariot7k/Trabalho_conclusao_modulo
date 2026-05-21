@@ -1,6 +1,7 @@
 package service;
 
 import model.Colaborador;
+import model.Frota;
 import model.RegistroColheita;
 import model.Talhao;
 
@@ -212,6 +213,61 @@ public class GerarRelatorios {
                 System.out.println("-> A distribuição de secagem está perfeitamente equilibrada.");
             }
         }
+        System.out.println("=====================================================\n");
+    }
+
+    // Método estático para apenas listar o ID e o Nome de todos os talhões
+    public static void listarTalhoes(Talhao[] talhoes, int qtdTalhoes) {
+        
+        System.out.println("\n=====================================================");
+        System.out.println("             LISTA DE TALHÕES CADASTRADOS");
+        System.out.println("=====================================================");
+
+        // Validação caso não tenha nada no vetor
+        if (qtdTalhoes == 0) {
+            System.out.println("Nenhum talhão cadastrado no sistema.");
+            System.out.println("=====================================================\n");
+            return; // Botão de ejetar
+        }
+
+        // Cabeçalho simples
+        System.out.println("ID   | Nome do Talhão");
+        System.out.println("-----------------------------------------------------");
+
+        // Laço simples para varrer e listar
+        for (int i = 0; i < qtdTalhoes; i++) {
+            // Usa printf para alinhar a coluna do ID com 4 espaços à esquerda
+            System.out.printf("%-4d | %s%n", talhoes[i].idTalhao, talhoes[i].nome);
+        }
+
+        System.out.println("=====================================================\n");
+    }
+
+    // Método estático para listar as placas e capacidades da frota
+    public static void listarFrota(Frota[] frota, int qtdVeiculos) {
+        
+        System.out.println("\n=====================================================");
+        System.out.println("             LISTA DE VEÍCULOS (FROTA)");
+        System.out.println("=====================================================");
+
+        // Validação caso o vetor esteja vazio
+        if (qtdVeiculos == 0) {
+            System.out.println("Nenhum veículo cadastrado no sistema.");
+            System.out.println("=====================================================\n");
+            return; // Botão de ejetar
+        }
+
+        // Cabeçalho alinhado
+        System.out.println("Placa       | Capacidade Máxima");
+        System.out.println("-----------------------------------------------------");
+
+        // Laço para percorrer e imprimir a frota
+        for (int i = 0; i < qtdVeiculos; i++) {
+            // %-11s garante que a placa ocupe 11 espaços alinhada à esquerda
+            // %.1f formata a capacidade com 1 casa decimal
+            System.out.printf("%-11s | %.1f Litros%n", frota[i].placa, frota[i].capacidadeMax);
+        }
+
         System.out.println("=====================================================\n");
     }
 }
