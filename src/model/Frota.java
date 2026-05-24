@@ -30,14 +30,23 @@ public class Frota {
             }
         } while (placaDuplicada);
 
-        // 2. Entrada e Validação da Capacidade Máxima
+       // 2. Entrada e Validação da Capacidade Máxima com Proteção contra Erros de Tipo
         do {
             System.out.print("Digite a capacidade máxima da carreta (em litros): ");
-            novoVeiculo.capacidadeMax = input.nextDouble();
-            input.nextLine(); // Limpeza crucial do buffer do teclado após ler double
+            try {
+                // Lê a linha inteira como texto e tenta converter para double
+                novoVeiculo.capacidadeMax = Double.parseDouble(input.nextLine());
 
-            if (novoVeiculo.capacidadeMax <= 0) {
-                System.out.println("[ERRO] A capacidade deve ser maior que zero!\n");
+                if (novoVeiculo.capacidadeMax <= 0) {
+                    System.out.println("[ERRO] A capacidade deve ser maior que zero!\n");
+                }
+                
+            } catch (NumberFormatException e) {
+                // Captura o erro caso o usuário digite letras, espaços ou símbolos inválidos
+                System.out.println("[ERRO] Digite um número decimal válido (Ex: 1200.50 ou 1000)!\n");
+                
+                // Força o valor para 0 para garantir que o laço do-while continue rodando
+                novoVeiculo.capacidadeMax = 0; 
             }
         } while (novoVeiculo.capacidadeMax <= 0);
 

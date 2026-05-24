@@ -15,7 +15,7 @@ public class Colaborador {
 
         // 1. Entrada do Nome
         System.out.print("Digite o nome do colaborador: ");
-        novoColaborador.nome = input.nextLine();
+        novoColaborador.nome = input.nextLine().trim();
 
         // 2. Entrada e Validação da Matrícula (Chave Primária)
         boolean matriculaDuplicada;
@@ -43,7 +43,7 @@ public class Colaborador {
 
         do {
             System.out.print("Digite o Tipo de Contrato (Diarista ou Fixo): ");
-            tipo = input.nextLine();
+            tipo = input.nextLine().trim();
 
             // Ignora maiúsculas e minúsculas para facilitar para o usuário
             if (tipo.equalsIgnoreCase("Diarista") || tipo.equalsIgnoreCase("Fixo")) {
