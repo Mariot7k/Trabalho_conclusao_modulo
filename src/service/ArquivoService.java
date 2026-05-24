@@ -14,7 +14,7 @@ import model.Talhao;
 public class ArquivoService {
     
     // Constante para o caminho da pasta, facilitando a manutenção
-    private static final String PASTA = "banco_de_dados/";
+    static String PASTA = "banco_de_dados/";
 
     // Método principal para ser chamado logo no início da sua Main
     public static boolean inicializarSistemaDeArquivos() {
@@ -43,7 +43,7 @@ public class ArquivoService {
     }
 
     // Método auxiliar privado para não repetir código
-    private static void criarArquivoSeNaoExistir(String caminho) {
+    public static void criarArquivoSeNaoExistir(String caminho) {
         try {
             File arquivo = new File(caminho);
             if (!arquivo.exists()) {
@@ -67,7 +67,7 @@ public class ArquivoService {
         salvarColheitas(colheitas, qtdColheitas);
     }
 
-    private static void salvarColaboradores(Colaborador[] equipe, int qtd) {
+    public static void salvarColaboradores(Colaborador[] equipe, int qtd) {
         // O PrintWriter envelopa o FileWriter de forma elegante
         try (PrintWriter writer = new PrintWriter(new FileWriter(PASTA + "colaboradores.csv", false))) {
             
@@ -83,7 +83,7 @@ public class ArquivoService {
         }
     }
 
-    private static void salvarFrota(Frota[] frota, int qtd) {
+    public static void salvarFrota(Frota[] frota, int qtd) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(PASTA + "frota.csv", false))) {
             
             writer.println("Placa;CapacidadeMax");
@@ -97,7 +97,7 @@ public class ArquivoService {
         }
     }
 
-    private static void salvarTalhoes(Talhao[] talhoes, int qtd) {
+    public static void salvarTalhoes(Talhao[] talhoes, int qtd) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(PASTA + "talhoes.csv", false))) {
             
             writer.println("ID;Nome;Variedade;EstimativaProducao");
@@ -111,7 +111,7 @@ public class ArquivoService {
         }
     }
 
-    private static void salvarColheitas(RegistroColheita[] colheitas, int qtd) {
+    public static void salvarColheitas(RegistroColheita[] colheitas, int qtd) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(PASTA + "colheitas.csv", false))) {
             
             writer.println("Data;MatriculaFuncionario;IDTalhao;PlacaTrator;Litros;Destino");

@@ -68,4 +68,21 @@ public class SeletorMenu {
             return -1; 
         }
     }
+
+    // Método utilitário de interação: pergunta S/N e retorna true para continuar, false para cancelar
+    public static boolean perguntarSeRepete(Scanner input, String mensagemErro) {
+        System.out.println(mensagemErro);
+        
+        char opcao = ' ';
+        do {
+            System.out.print("Deseja tentar novamente? (S - Sim / N - Cancelar e voltar ao menu): ");
+            String resposta = input.nextLine().trim().toUpperCase();
+            opcao = resposta.isEmpty() ? ' ' : resposta.charAt(0);
+
+            if (opcao == 'N') return false;
+            if (opcao != 'S') System.out.println("[ERRO] Opção inválida! Digite apenas 'S' ou 'N'.");
+
+        } while (opcao != 'S');
+        return true;
+    }
 }

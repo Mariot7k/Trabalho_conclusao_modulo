@@ -1,6 +1,8 @@
 package model;
 import java.util.Scanner;
 
+import view.SeletorMenu;
+
 public class RegistroColheita {
     public String data;
     public int matriculaFuncionario;
@@ -43,18 +45,9 @@ public class RegistroColheita {
             }
 
             if (!funcionarioValido) {
-                System.out.println("\n[ERRO - R3] Entrada inválida ou Matrícula não encontrada!");
-                
-                char opcao = ' ';
-                do {
-                    System.out.print("Deseja tentar novamente? (S - Sim / N - Cancelar e voltar ao menu): ");
-                    String resposta = input.nextLine().trim().toUpperCase();
-                    opcao = resposta.isEmpty() ? ' ' : resposta.charAt(0);
-                    
-                    if (opcao == 'N') return null;
-                    if (opcao != 'S') System.out.println("[ERRO] Opção inválida! Digite apenas 'S' ou 'N'.");
-                    
-                } while (opcao != 'S');
+                if (!SeletorMenu.perguntarSeRepete(input, "\n[ERRO - R3] Entrada inválida ou Matrícula não encontrada!")) {
+                    return null;
+                }
             }
         } while (!funcionarioValido);
 
@@ -80,20 +73,9 @@ public class RegistroColheita {
 
             // 4. Fluxo de erro protegido pelo operador ternário e laço aninhado
             if (!talhaoValido) {
-                System.out.println("\n[ERRO] Código do talhão inválido ou não encontrado no sistema.");
-
-                char opcao = ' ';
-                do {
-                    System.out.print("Deseja tentar novamente? (S - Sim / N - Cancelar e voltar ao menu): ");
-                    String resposta = input.nextLine().trim().toUpperCase();
-                    
-                    // Operador Ternário: Se vazio, recebe ' ', senão pega a 1ª letra (Aceita "S" ou "SIM")
-                    opcao = resposta.isEmpty() ? ' ' : resposta.charAt(0);
-                    
-                    if (opcao == 'N') return null;
-                    if (opcao != 'S') System.out.println("[ERRO] Opção inválida! Digite apenas 'S' ou 'N'.\n");
-                    
-                } while (opcao != 'S');
+                if (!SeletorMenu.perguntarSeRepete(input, "\n[ERRO] Código do talhão inválido ou não encontrado no sistema.")) {
+                    return null;
+                }
             }
         } while (!talhaoValido);
 
@@ -117,13 +99,8 @@ public class RegistroColheita {
             }
 
             if (!veiculoValido) {
-                System.out.println("\n[ERRO - R1] Carga não pode ser lançada num trator que não existe!");
-                System.out.print("Deseja tentar novamente? (S - Sim / N - Cancelar e voltar ao menu): ");
-                char tentarNovamente = input.nextLine().toUpperCase().charAt(0);
-                
-                if (tentarNovamente == 'N') {
-                    System.out.println("-> Operação cancelada pelo usuário. Retornando ao menu...");
-                    return null; // O "Botão de Ejetar": Cancela a criação e devolve vazio
+                if (!SeletorMenu.perguntarSeRepete(input, "\n[ERRO - R1] Carga não pode ser lançada num trator que não existe!")) {
+                    return null;
                 }
             }
         } while (!veiculoValido);
@@ -155,17 +132,9 @@ public class RegistroColheita {
 
             // Se a carga não for válida por qualquer motivo (erro matemático ou erro de tipo), oferece a saída
             if (!cargaValida) {
-                char opcao = ' ';
-                do {
-                    System.out.print("Deseja corrigir o volume? (S - Sim / N - Cancelar e voltar ao menu): ");
-                    String resposta = input.nextLine().trim().toUpperCase();
-                    // Operador Ternário: Se vazio, recebe ' ', senão pega a 1ª letra (Aceita "S" ou "SIM")
-                    opcao = resposta.isEmpty() ? ' ' : resposta.charAt(0);
-                    
-                    if (opcao == 'N') return null;
-                    if (opcao != 'S') System.out.println("[ERRO] Opção inválida! Digite apenas 'S' ou 'N'.\n");
-
-                } while (opcao != 'S');
+                if (!SeletorMenu.perguntarSeRepete(input, "")) {
+                    return null;
+                }
             }
         } while (!cargaValida);
 
