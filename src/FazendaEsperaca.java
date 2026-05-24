@@ -48,95 +48,69 @@ public class FazendaEsperaca {
 
             switch (opcao) {
                 case 1:
-                    System.out.print("\nQuantos colaboradores você deseja cadastrar de uma vez: ");
-                    int qtdCadastrarColaborador = input.nextInt();
-                    input.nextLine();
-
-                    // VALIDAÇÃO CRUCIAL: O vetor tem espaço para essa quantidade toda?
-                    if (qtdColaboradores + qtdCadastrarColaborador <= equipe.length) {
-                        for (int i = 0; i < qtdCadastrarColaborador; i++) {
-                            System.out.println("\n--- Cadastro " + (i + 1) + " de " + qtdCadastrarColaborador + " ---");
-                            
-                            // Chama a função estática para criar 1 colaborador
-                            Colaborador recemCadastrado = Colaborador.cadastrarColaborador(input, equipe, qtdColaboradores);
-                            
-                            // Guarda na posição atual e atualiza o contador principal da Main
-                            equipe[qtdColaboradores] = recemCadastrado;
-                            qtdColaboradores++; 
-                        }
+                    if (qtdColaboradores < equipe.length) {
+                        System.out.println("\n--- Novo Cadastro de Colaborador ---");
                         
-                        System.out.println("\n-> Sucesso! " + qtdCadastrarColaborador + " colaboradores cadastrados.");
+                        // Chama a função estática para criar 1 colaborador
+                        Colaborador recemCadastrado = Colaborador.cadastrarColaborador(input, equipe, qtdColaboradores);
+                        
+                        // Guarda na posição atual e atualiza o contador principal da Main
+                        equipe[qtdColaboradores] = recemCadastrado;
+                        qtdColaboradores++; 
+                        
+                        System.out.println("\n-> Sucesso! Colaborador cadastrado.");
                         System.out.println("-> Total na equipe agora: " + qtdColaboradores + "/" + equipe.length);
 
                     } else {
-                        // Se o usuário pedir para cadastrar 30, mas só tiver 10 vagas
-                        int espacoLivre = equipe.length - qtdColaboradores;
-                        System.out.println("[ERRO] Espaço insuficiente no sistema!");
-                        System.out.println("Você tentou cadastrar " + qtdCadastrarColaborador + ", mas só há " + espacoLivre + " vagas disponíveis.");
+                        // Se o vetor já estiver cheio
+                        System.out.println("\n[ERRO] Espaço insuficiente no sistema!");
+                        System.out.println("O limite máximo de " + equipe.length + " colaboradores já foi atingido.");
                     }
                     break;
 
                 case 2:
-                    System.out.print("\nQuantos veículos você deseja cadastrar de uma vez: ");
-                    int qtdCadastrarVeiculo = input.nextInt();
-                    input.nextLine(); // Limpeza de buffer
-
-                    // Validação de limite: o vetor de 100 posições suporta essa quantidade?
-                    if (qtdVeiculos + qtdCadastrarVeiculo <= frota.length) {
+                    // VALIDAÇÃO CRUCIAL: O vetor tem espaço para mais 1 cadastro?
+                    if (qtdVeiculos < frota.length) {
+                        System.out.println("\n--- Novo Cadastro de Veículo ---");
                         
-                        // Loop para realizar a quantidade de cadastros solicitada
-                        for (int i = 0; i < qtdCadastrarVeiculo; i++) {
-                            System.out.println("\n--- Veículo " + (i + 1) + " de " + qtdCadastrarVeiculo + " ---");
-                            
-                            // Chama a função estática passando o Scanner, o vetor e o contador atual
-                            Frota recemCadastrado = Frota.cadastrarVeiculo(input, frota, qtdVeiculos);
-                            
-                            // Armazena no vetor e atualiza o índice do contador da Main
-                            frota[qtdVeiculos] = recemCadastrado;
-                            qtdVeiculos++;
-                        }
+                        // Chama a função estática para criar 1 veículo
+                        Frota recemCadastrado = Frota.cadastrarVeiculo(input, frota, qtdVeiculos);
                         
-                        System.out.println("\n-> Sucesso! " + qtdCadastrarVeiculo + " veículos adicionados à frota.");
-                        System.out.println("-> Total de veículos no sistema: " + qtdVeiculos + "/" + frota.length);
+                        // Guarda na posição atual e atualiza o contador principal da Main
+                        frota[qtdVeiculos] = recemCadastrado;
+                        qtdVeiculos++; 
+                        
+                        System.out.println("\n-> Sucesso! Veículo cadastrado.");
+                        System.out.println("-> Total na frota agora: " + qtdVeiculos + "/" + frota.length);
 
                     } else {
-                        // Alerta caso o usuário tente estourar o tamanho do vetor (100)
-                        int vagasDisponiveis = frota.length - qtdVeiculos;
-                        System.out.println("[ERRO] Espaço insuficiente no sistema da frota!");
-                        System.out.println("Você tentou cadastrar " + qtdCadastrarVeiculo + ", mas o sistema só possui " + vagasDisponiveis + " vagas livres.");
+                        // Se o vetor já estiver cheio
+                        System.out.println("\n[ERRO] Espaço insuficiente no sistema!");
+                        System.out.println("O limite máximo de " + frota.length + " veículos já foi atingido.");
                     }
                     break;
 
                     case 3:
-                        System.out.print("\nQuantos talhões você deseja cadastrar de uma vez: ");
-                        int qtdParaCadastrar = input.nextInt();
-                        input.nextLine(); // Limpeza de buffer
+                    // VALIDAÇÃO CRUCIAL: O vetor tem espaço para mais 1 cadastro?
+                    if (qtdTalhoes < talhoes.length) {
+                        System.out.println("\n--- Novo Cadastro de Talhão ---");
+                        
+                        // Chama a função estática para criar 1 talhão
+                        Talhao recemCadastrado = Talhao.cadastrarTalhao(input, talhoes, qtdTalhoes);
+                        
+                        // Guarda na posição atual e atualiza o contador principal da Main
+                        talhoes[qtdTalhoes] = recemCadastrado;
+                        qtdTalhoes++; 
+                        
+                        System.out.println("\n-> Sucesso! Talhão cadastrado.");
+                        System.out.println("-> Total de talhões agora: " + qtdTalhoes + "/" + talhoes.length);
 
-                        // Validação de limite: o vetor de 100 posições suporta essa quantidade?
-                        if (qtdTalhoes + qtdParaCadastrar <= talhoes.length) {
-                            
-                            // Loop para realizar a quantidade de cadastros solicitada
-                            for (int i = 0; i < qtdParaCadastrar; i++) {
-                                System.out.println("\n--- Talhão " + (i + 1) + " de " + qtdParaCadastrar + " ---");
-                                
-                                // Chama a função estática passando o Scanner, o vetor e o contador atual
-                                Talhao recemCadastrado = Talhao.cadastrarTalhao(input, talhoes, qtdTalhoes);
-                                
-                                // Armazena no vetor e atualiza o índice do contador da Main
-                                talhoes[qtdTalhoes] = recemCadastrado;
-                                qtdTalhoes++;
-                            }
-                            
-                            System.out.println("\n-> Sucesso! " + qtdParaCadastrar + " talhões adicionados ao sistema.");
-                            System.out.println("-> Total de talhões no sistema: " + qtdTalhoes + "/" + talhoes.length);
-
-                        } else {
-                            // Alerta caso o usuário tente estourar o tamanho do vetor (100)
-                            int vagasDisponiveis = talhoes.length - qtdTalhoes;
-                            System.out.println("[ERRO] Espaço insuficiente no sistema para talhões!");
-                            System.out.println("Você tentou cadastrar " + qtdParaCadastrar + ", mas o sistema só possui " + vagasDisponiveis + " vagas livres.");
-                        }
-                        break;
+                    } else {
+                        // Se o vetor já estiver cheio
+                        System.out.println("\n[ERRO] Espaço insuficiente no sistema!");
+                        System.out.println("O limite máximo de " + talhoes.length + " talhões já foi atingido.");
+                    }
+                    break;
 
                     case 4:
                         if (qtdColheitas < colheitas.length) {
